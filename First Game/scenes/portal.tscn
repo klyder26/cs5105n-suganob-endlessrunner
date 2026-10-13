@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://op5usysud75c"]
+
+[ext_resource type="Script" uid="uid://cr6j8ksp5dtv2" path="res://scripts/portal.gd" id="1_1ffj6"]
+[ext_resource type="Texture2D" uid="uid://cyfxuch6qa87f" path="res://icon.svg" id="1_v0xau"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ud4d0"]
+radius = 28.284271
+
+[node name="portal" type="Area2D" unique_id=926178528]
+script = ExtResource("1_1ffj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=321274572]
+position = Vector2(-0.5000005, -0.9999993)
+scale = Vector2(0.2421875, 0.23437501)
+texture = ExtResource("1_v0xau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1235248380]
+shape = SubResource("CircleShape2D_ud4d0")
+one_way_collision = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

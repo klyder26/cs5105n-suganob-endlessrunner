@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://btl7lsymr30gg"]
+
+[ext_resource type="Script" uid="uid://crfh5gnrj10fq" path="res://scripts/pausemenu.gd" id="1_0mw5b"]
+
+[node name="pausemenu" type="Control" unique_id=1927900144]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0mw5b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=963326352]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 646.0
+color = Color(1, 0.9490196, 0.7372549, 0.31764707)
+
+[node name="Button" type="Button" parent="." unique_id=14336326]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 367.0
+offset_right = 659.0
+offset_bottom = 436.0
+text = "CONTINUE"
+
+[node name="Button2" type="Button" parent="." unique_id=982257344]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 466.0
+offset_right = 663.0
+offset_bottom = 532.0
+text = "EXIT"

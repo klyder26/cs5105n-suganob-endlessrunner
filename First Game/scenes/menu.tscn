@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://1wppeflfblqg"]
+
+[ext_resource type="Script" uid="uid://dwi56d11wmbrs" path="res://scripts/menu.gd" id="1_yqeox"]
+
+[node name="Menu" type="Control" unique_id=22985658]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yqeox")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1640019394]
+layout_mode = 0
+offset_left = -567.0
+offset_top = -316.0
+offset_right = 586.0
+offset_bottom = 328.0
+color = Color(1, 1, 0.7529412, 1)
+
+[node name="Button" type="Button" parent="." unique_id=193371828]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 139.0
+offset_right = 43.0
+offset_bottom = 189.0
+text = "START
+"
+
+[node name="Button2" type="Button" parent="." unique_id=1907278040]
+layout_mode = 0
+offset_left = -43.0
+offset_top = 204.0
+offset_right = 44.0
+offset_bottom = 253.0
+text = "QUIT"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1692841667]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
