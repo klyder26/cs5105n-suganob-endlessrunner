@@ -1,38 +1,650 @@
-[gd_scene format=3 uid="uid://1wppeflfblqg"]
+[gd_scene load_steps=38 format=3 uid="uid://1wppeflfblqg"]
 
 [ext_resource type="Script" uid="uid://dwi56d11wmbrs" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_bold"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="4_knight"]
+[ext_resource type="Texture2D" uid="uid://bl53gpvg5mh1y" path="res://assets/sprites/slime_green.png" id="5_slime"]
+[ext_resource type="Texture2D" uid="uid://bped01tsjeycn" path="res://assets/sprites/coin.png" id="6_coin"]
+[ext_resource type="Texture2D" uid="uid://cxuqjimd7csiq" path="res://assets/sprites/platforms.png" id="7_platform"]
+[ext_resource type="AudioStream" uid="uid://duhe7my8ilfph" path="res://assets/sounds/tap.wav" id="8_tap"]
+[ext_resource type="AudioStream" uid="uid://hxv3svfwkg67" path="res://assets/sounds/coin.wav" id="9_coin_sfx"]
+[ext_resource type="AudioStream" uid="uid://chhyiookx3ilk" path="res://assets/sounds/power_up.wav" id="10_powerup"]
 
-[node name="Menu" type="Control" unique_id=22985658]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0"]
+atlas = ExtResource("4_knight")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1"]
+atlas = ExtResource("4_knight")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2"]
+atlas = ExtResource("4_knight")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3"]
+atlas = ExtResource("4_knight")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knight"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0"]
+atlas = ExtResource("5_slime")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1"]
+atlas = ExtResource("5_slime")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2"]
+atlas = ExtResource("5_slime")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3"]
+atlas = ExtResource("5_slime")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slime"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0"]
+atlas = ExtResource("6_coin")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1"]
+atlas = ExtResource("6_coin")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2"]
+atlas = ExtResource("6_coin")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3"]
+atlas = ExtResource("6_coin")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4"]
+atlas = ExtResource("6_coin")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5"]
+atlas = ExtResource("6_coin")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6"]
+atlas = ExtResource("6_coin")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7"]
+atlas = ExtResource("6_coin")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_play_normal"]
+bg_color = Color(0.168627, 0.435294, 0.301961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.486275, 0.866667, 0.462745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_play_hover"]
+bg_color = Color(0.231373, 0.584314, 0.407843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.819608, 1, 0.607843, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_play_pressed"]
+bg_color = Color(0.109804, 0.309804, 0.207843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.360784, 0.686275, 0.352941, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.14902, 0.192157, 0.290196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.345098, 0.435294, 0.619608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.227451, 0.298039, 0.458824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.866667, 0.345098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.105882, 0.133333, 0.211765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85098, 0.690196, 0.227451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_focus"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.901961, 0.439216, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.0862745, 0.109804, 0.176471, 0.960784)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.960784, 0.776471, 0.223529, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_size = 16
+shadow_offset = Vector2(0, 6)
+
+[node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yqeox")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1640019394]
-layout_mode = 0
-offset_left = -567.0
-offset_top = -316.0
-offset_right = 586.0
-offset_bottom = 328.0
-color = Color(1, 1, 0.7529412, 1)
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=193371828]
-layout_mode = 0
-offset_left = -40.0
-offset_top = 139.0
-offset_right = 43.0
-offset_bottom = 189.0
-text = "START
-"
+[node name="Sky" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.0862745, 0.14902, 1)
 
-[node name="Button2" type="Button" parent="." unique_id=1907278040]
-layout_mode = 0
-offset_left = -43.0
-offset_top = 204.0
-offset_right = 44.0
-offset_bottom = 253.0
+[node name="SkyHorizon" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.109804, 0.14902, 0.254902, 0.6)
+
+[node name="GroundDeco" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0431373, 0.054902, 0.0901961, 1)
+
+[node name="Stars" type="CPUParticles2D" parent="Background"]
+position = Vector2(576, 324)
+amount = 32
+lifetime = 6.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(576, 324)
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 6.0
+initial_velocity_max = 18.0
+scale_amount_min = 1.5
+scale_amount_max = 3.5
+color = Color(1, 0.92549, 0.647059, 0.65)
+
+[node name="LeftDecor" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(170, 390)
+
+[node name="Platform" type="Sprite2D" parent="LeftDecor"]
+texture = ExtResource("7_platform")
+region_enabled = true
+region_rect = Rect2(16, 0, 32, 9)
+scale = Vector2(4, 4)
+
+[node name="Knight" type="AnimatedSprite2D" parent="LeftDecor"]
+position = Vector2(0, -42)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_knight")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="RightDecor" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(982, 390)
+
+[node name="Platform" type="Sprite2D" parent="RightDecor"]
+texture = ExtResource("7_platform")
+region_enabled = true
+region_rect = Rect2(16, 0, 32, 9)
+scale = Vector2(4, 4)
+
+[node name="Slime" type="AnimatedSprite2D" parent="RightDecor"]
+position = Vector2(0, -32)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_slime")
+autoplay = "default"
+frame_progress = 0.42
+
+[node name="Coin" type="AnimatedSprite2D" parent="RightDecor"]
+position = Vector2(0, -84)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_coin")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.81
+
+[node name="UI" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainVBox" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="TitleContainer" type="VBoxContainer" parent="UI/MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BadgeLabel" type="Label" parent="UI/MainVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.835294, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+text = "★ 8-BIT RETRO ADVENTURE ★"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI/MainVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.827451, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 38
+text = "KNIGHT'S QUEST"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="UI/MainVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.784314, 0.988235, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "RUN  •  JUMP  •  COLLECT  •  SURVIVE"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="UI/MainVBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+
+[node name="ContinueButton" type="Button" parent="UI/MainVBox/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+theme_override_colors/font_hover_color = Color(0.9, 1, 0.8, 1)
+theme_override_colors/font_color = Color(0.95, 0.98, 0.95, 1)
+theme_override_colors/font_focus_color = Color(0.9, 1, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_play_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_play_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_play_normal")
+text = "CONTINUE"
+
+[node name="PlayButton" type="Button" parent="UI/MainVBox/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ControlsButton")
+theme_override_colors/font_hover_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_colors/font_color = Color(0.960784, 0.968627, 0.984314, 1)
+theme_override_colors/font_focus_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "NEW GAME"
+
+[node name="ControlsButton" type="Button" parent="UI/MainVBox/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_hover_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_colors/font_color = Color(0.960784, 0.968627, 0.984314, 1)
+theme_override_colors/font_focus_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "HOW TO PLAY"
+
+[node name="QuitButton" type="Button" parent="UI/MainVBox/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+theme_override_colors/font_hover_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_colors/font_color = Color(0.960784, 0.968627, 0.984314, 1)
+theme_override_colors/font_focus_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 text = "QUIT"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1692841667]
+[node name="FooterLabel" type="Label" parent="UI/MainVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.501961, 0.584314, 0.721569, 0.85)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 8
+text = "USE ARROW KEYS / ENTER OR MOUSE TO SELECT"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[node name="HowToPlayModal" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalOverlay" type="ColorRect" parent="HowToPlayModal"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0470588, 0.0862745, 0.823529)
+
+[node name="ModalCenter" type="CenterContainer" parent="HowToPlayModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="PanelContainer" parent="HowToPlayModal/ModalCenter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="HowToPlayModal/ModalCenter/ModalPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="ContentVBox" type="VBoxContainer" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ModalTitle" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.866667, 0.301961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 18
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+layout_mode = 2
+
+[node name="ControlsGrid" type="GridContainer" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Key1" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.776471, 0.223529, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+text = "[A] [D] / [◄] [►]"
+
+[node name="Desc1" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "Move Left / Right"
+
+[node name="Key2" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.776471, 0.223529, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+text = "[SPACE]"
+
+[node name="Desc2" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "Jump"
+
+[node name="Key3" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.776471, 0.223529, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 9
+text = "[ESC] / [P]"
+
+[node name="Desc3" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "Pause Game"
+
+[node name="HSeparator2" type="HSeparator" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+layout_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.95, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 8
+text = "• Collect shiny coins along your journey
+• Dodge venomous slimes & deep chasms
+• Reach the magic portal to clear the level!"
+autowrap_mode = 2
+
+[node name="CloseModalButton" type="Button" parent="HowToPlayModal/ModalCenter/ModalPanel/Margin/ContentVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_colors/font_color = Color(0.960784, 0.968627, 0.984314, 1)
+theme_override_colors/font_focus_color = Color(1, 0.921569, 0.470588, 1)
+theme_override_fonts/font = ExtResource("2_bold")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_focus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+text = "GOT IT!"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tap")
+bus = &"SFX"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_coin_sfx")
+bus = &"SFX"
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_powerup")
+bus = &"SFX"

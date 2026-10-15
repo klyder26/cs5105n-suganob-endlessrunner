@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2w2i5h0lhc6l" path="res://scenes/slime.tscn" id="6_l0s6b"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
 [ext_resource type="PackedScene" uid="uid://op5usysud75c" path="res://scenes/portal.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://c3kp7n1x7yv8a" path="res://scenes/checkpoint.tscn" id="12_cp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ashvg"]
 texture = ExtResource("2_r1crl")
@@ -258,7 +259,6 @@ position_smoothing_enabled = true
 
 [node name="portal" parent="." unique_id=926178528 instance=ExtResource("10_vtaks")]
 position = Vector2(530, -126)
-collision_mask = 2
 next_scene_path = "uid://ckg4isy2vkewp"
 
 [node name="Killzone" parent="." unique_id=1027130234 instance=ExtResource("5_x8euu")]
@@ -354,10 +354,6 @@ theme_override_font_sizes/font_size = 8
 text = "Great job!"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Labels" unique_id=1236891005]
-offset_left = 100.0
-offset_top = -7.0
-offset_right = 177.0
-offset_bottom = 24.0
-size_flags_horizontal = 4
-text = "imissyou"
+[node name="Checkpoint" parent="." unique_id=235683089 instance=ExtResource("12_cp")]
+position = Vector2(495, 38)
+checkpoint_id = "checkpoint_level1_mid"
