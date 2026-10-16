@@ -1,6 +1,6 @@
 # Knight's Quest: Endless Runner
 
-> A 2D retro action-platformer and runner built in Godot 4. Sprint through hazardous forests and gravity-defying sky citadels, dodge slime patrols, gather coins, activate mid-level checkpoints, and warp through magical portals to survive!
+> A 2D retro action-platformer and runner built in Godot 4, based on and inspired by **Brackeys' beginner tutorial** (*"How to make a video game - Godot 4 for beginners"*). Sprint through hazardous forests and gravity-defying sky citadels, dodge slime patrols, gather coins, activate mid-level checkpoints, and warp through magical portals to survive!
 
 > [!NOTE]
 > **Screenshot Setup**: Place your activity preview screenshots in the [`screenshots/`](screenshots/) directory using the following naming format:
@@ -102,3 +102,11 @@
 - **Decoupled Spawning**: The `Player` controller remains completely decoupled from save logic; `SaveManager` observes scene tree entries and repositions characters automatically.
 - **Scalable Save Schema**: Built with an open `extra` dictionary bucket allowing future variables (gems, health, achievements, settings) to be saved without breaking compatibility.
 - **Clean Game Loop**: Automatic saving triggers upon touching checkpoints, entering portals, and clearing levels, while starting a new game securely wipes previous data.
+
+---
+
+## Acknowledgements & Credits
+
+- **Game Foundation & Inspiration**: Based on and inspired by **[Brackeys' Godot 4 Beginner Tutorial](https://www.youtube.com/watch?v=LOhfqjmasi0)** (*"How to make a video game - 2D Godot 4 for Beginners"*).
+- **Original Assets**: 2D pixel-art knight, slimes, tilesets, and sound effects provided by **Brackeys** and collaborating artists (**Pixel Frog**, **Kevin MacLeod**).
+- **Course Extensions**: Expanded across weekly milestones with custom dynamic enemy AI, anti-gravity zones, checkpoint & JSON save/load systems, UI menus, touch controls, and multi-platform release pipelines.
