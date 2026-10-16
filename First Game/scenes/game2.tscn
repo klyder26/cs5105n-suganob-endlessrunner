@@ -366,6 +366,7 @@ position = Vector2(240, 32)
 
 [node name="Slime2" parent="Slimes" unique_id=1492433052 instance=ExtResource("8_5kdtj")]
 position = Vector2(800, -144)
+can_split = true
 
 [node name="portal" parent="." unique_id=926178528 instance=ExtResource("11_portal")]
 position = Vector2(1030, -196)

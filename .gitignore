@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Exported builds (binaries exceed GitHub's 100MB limit)
+builds/
+
+# System files
+.DS_Store

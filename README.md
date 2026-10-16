@@ -6,11 +6,12 @@
 > **Screenshot Setup**: Place your activity preview screenshots in the [`screenshots/`](screenshots/) directory using the following naming format:
 > - `week-01.png`
 > - `week-02.png`
-> - `week-03-1.png` & `week-03-2.png` (2 screenshots for Level Design)
+> - `week-03-01.png` & `week-03-02.png` (2 screenshots for Level Design)
 > - `week-04.png`
-> - `week-05-1.png` & `week-05-2.png` (2 screenshots for UI/UX & Audio)
+> - `week-05-01.png` & `week-05-02.png` (2 screenshots for UI/UX & Audio)
 > - `week-06.png`
 > - `week-07.png`
+> - `week-08.png`
 
 ---
 
@@ -26,10 +27,14 @@
   - `P` / `Esc`: Pause Game
   - `Enter` / `Mouse Click`: Menu Selection & UI Navigation
 
-To run locally:
+### Running in the Editor:
 1. Open the **Godot Engine Project Manager**.
 2. Click **Import** and select the `First Game/project.godot` file.
 3. Click **Run Project** (or press `F5`).
+
+### Running Exported Builds:
+- **Windows Desktop**: Launch `builds/windows/KnightsQuest.exe`.
+- **Web (HTML5)**: Serve `builds/web/index.html` via any local HTTP server (e.g., `python3 -m http.server 8000` inside `builds/web/`) or play on itch.io.
 
 ---
 
@@ -48,8 +53,8 @@ To run locally:
 ---
 
 ### Week 3: Level Design
-![Week 3 Preview - Part 1](screenshots/week-03-1.png)
-![Week 3 Preview - Part 2](screenshots/week-03-2.png)
+![Week 3 Preview - Part 1](screenshots/week-03-01.png)
+![Week 3 Preview - Part 2](screenshots/week-03-02.png)
 - **Description**: Crafted a multi-stage progression system featuring Level 1 (`game.tscn`) and Level 2: Sky Citadel (`game2.tscn`) using Godot's `TileMap` with dedicated physics collision layers. Implemented one-way jump-through platforms (`platform.tscn`), bottomless pit boundaries with `WorldBoundaryShape2D` hazards (`killzone.tscn`), and an experimental vertical gravity stream (`anti_gravity_zone.tscn`). Configured dynamic camera tracking (`Camera2D`) with horizontal position smoothing and level boundaries.
 
 ---
@@ -61,8 +66,8 @@ To run locally:
 ---
 
 ### Week 5: UI/UX & Audio
-![Week 5 Preview - Part 1](screenshots/week-05-1.png)
-![Week 5 Preview - Part 2](screenshots/week-05-2.png)
+![Week 5 Preview - Part 1](screenshots/week-05-01.png)
+![Week 5 Preview - Part 2](screenshots/week-05-02.png)
 - **Description**: Built a comprehensive user interface system featuring an animated Main Menu (`menu.tscn`, `menu.gd`) with button hover juice, an interactive "How to Play" controls modal, and an in-game pause screen (`pausemenu.tscn`) with real-time coin stats. Configured a dedicated audio bus layout (`default_bus_layout.tres`) separating `Master` and `SFX` channels alongside an autoloaded background soundtrack (`music.tscn`). Integrated audio feedback for jumps, coin collections, UI clicks, and victory fanfare.
 
 ---
@@ -76,6 +81,18 @@ To run locally:
 ### Week 7: Juice, Save/Load & Optimization
 ![Week 7 Preview](screenshots/week-07.png)
 - **Description**: Added game feel polish including slow-motion death hitstop (`Engine.time_scale = 0.5`) and playful button and portal punch tweens (`Tween.TRANS_BACK`). Architected a production-ready `SaveManager` autoload singleton (`save_manager.gd`) using Godot's `FileAccess` and JSON serialization to persist level progression, coin counts, and mid-level checkpoints (`checkpoint.tscn`). Implemented decoupled player respawning that automatically repositions the player at the active checkpoint on death reload or game continuation.
+
+---
+
+### Week 8: Multi-Platform Export & Team Git
+![Week 8 Preview](screenshots/week-08.png)
+- **Description**: Finalized the release pipeline by creating multi-platform export presets for Windows Desktop and Web (HTML5) while conducting team Git collaboration exercises. Configured responsive `canvas_items` stretch modes, nearest-neighbor texture filtering, and Web focus canvas policies to ensure pixel-perfect fidelity across both desktop displays and web browsers. Executed feature branching, pull requests, and intentional merge conflict resolution workflows before deploying the verified production release.
+- **Target Platforms & Tweaks**:
+  - **Platform 1: Windows Desktop (x86_64)** — Configured 64-bit standalone executable export (`KnightsQuest.exe`) with embedded PCK packaging, V-Sync optimizations, and native desktop window scaling.
+  - **Platform 2: Web (HTML5 / WebAssembly)** — Configured browser deployment (`index.html`) optimized for itch.io hosting with `canvas_items` viewport scaling, automatic canvas focus on launch, and low-latency audio buffering.
+- **Git Workflow & Delivery**:
+  - Practiced feature branching, opening pull requests, and resolving intentional merge conflicts.
+  - Final mini-game build verified and pushed to the repository.
 
 ---
 
